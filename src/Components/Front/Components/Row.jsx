@@ -1,36 +1,29 @@
-import { useContext } from 'react';
-import FrontContext from '../FrontContext';
+import StarRating from './StarRating';
 // import Comment from './Comment';
 // import Rating from './Rating';
 
 function Row({ row }) {
-  const {
-  } = useContext(FrontContext);
 
   return (
     <>
-      <div className='flex-row user-4 frame'>
+      <div className='flex-row short frame'>
         {/* <div>
           <img
             className='img-box'
             src={row.photo}
             alt='film'
           />
-        </div> */}
-        <p>{row.title}</p>
-        <p>{row.cat}</p>
+         </div> */}
+        <h2>{row.title}</h2>
+        <h3>{row.cat}</h3>
         <p className='prc'>{Number(row.price).toFixed(2)} Eur.</p>
-        <div className='heading-sm'>
-          <svg><use href='#rating' /></svg>
-          <p>{row.rating.toFixed(2)}</p>
+        <div className="flex-row short">
         </div>
+        <StarRating row={row} />
       </div>
-      <div className='btns'>
-        {/* <button type='button' className='put' onClick={addToCart}>
-          <svg>
-            <use href='#cart' />
-          </svg>
-        </button> */}
+      <div className='rateIt pad'>
+        <p className='heading'>{row.rating.toFixed(2)}</p>
+        <svg><use href='#rating' /></svg>
       </div>
       <div className="flex">
         {/* <Comment row={row} /> */}

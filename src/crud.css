@@ -72,6 +72,7 @@ body {
 }
 .flex-row h2 {
   align-self: flex-start;
+  font-family: cursive;
 }
 
 .flex-card {
@@ -103,6 +104,19 @@ body {
   justify-content: space-between;
   align-items: center;
   height: fit-content;
+}
+.flex-row.short {
+  width: 80%;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.flex-row.short h2,
+.flex-row.short h3 {
+  width: 33%;
+  word-break: break-all;
+}
+.padx {
+  padding: 0 30px;
 }
 .order-9,
 .main-5,
@@ -147,6 +161,7 @@ body {
   border-radius: 5px;
   width: fit-content;
   justify-self: center;
+  font-family: cursive;
 }
 .confirm span {
   color: rgb(137, 118, 118);
@@ -527,7 +542,9 @@ h1.cart-heading {
   display: flex;
   align-items: center;
 }
-
+.search {
+  margin: 0 7px;
+}
 select.sorting,
 .search input {
   height: 40px;
@@ -922,9 +939,63 @@ button.put.reg {
   font-family: cursive;
   margin: 0px 0 10px 0;
 }
-.feedback form .rateIt {
-  display: flex;
 
+/* STAR RATING STYLE */
+.rating {
+  display: flex;
+}
+.rating input {
+  position: absolute;
+  left: -100vw;
+}
+.rating label {
+  width: 48px;
+  height: 48px;
+  padding: 48px 0 0;
+  overflow: hidden;
+  background: url('./img/star-icon.svg') no-repeat top left;
+}
+button.rate {
+  width: 90px;
+  height: fit-content;
+  border-radius: 5px;
+  background-color: #4abf32eb;
+  color: #fff;
+  font-size: 16px;
+  font-family: cursive;
+  margin: 10px;
+}
+button.rate:hover {
+  background-color: #11c50e;
+}
+.rateIt svg {
+  fill: #ffc52f;
+}
+.rate svg {
+  fill: #efec0a61;
+}
+div.rate {
+  position: relative;
+}
+.rate span {
+  position: absolute;
+  font-size: 26px;
+  left: 9px;
+  font-family: cursive;
+}
+/* .rating:not(:hover) input:indeterminate + label,
+.rating:not(:hover) input:checked ~ input + label,
+.rating input:hover ~ input + label {
+  background-position: -48px 0;
+}
+.rating:not(:hover) input:focus-visible + label {
+  background-position: -96px 0;
+} */
+/* END OF STAR RATING STYLE CODE */
+
+.feedback form .rateIt,
+.rateIt {
+  display: flex;
   justify-items: center;
   align-items: flex-start;
   padding-left: 20px;
@@ -1047,7 +1118,10 @@ h1 b {
   }
 }
 .flex-nw {
+  width: 80%;
   display: flex;
+  gap: 10px;
+  justify-content: space-around;
 }
 
 @media screen and (max-width: 975px) {

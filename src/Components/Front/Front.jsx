@@ -11,13 +11,16 @@ function Front({ show }) {
   const [message, setMessage] = useState(null);
 
   const [movies, dispachMovies] = useReducer(cityReducer, []);
+  const [cats, setCats] = useState(null);
 
-  const [sort, setSort] = useState(0);
+  const [sortRate, setSortRate] = useState(0);
   const [filter, setFilter] = useState(0);
   const [search, setSearch] = useState('');
 
   const [createCom, setCreateCom] = useState(null);
-  // const [createRates, setCreateRates] = useState(null);
+
+  const [rate, setRate] = useState(0);
+  const [createRates, setCreateRates] = useState(null);
 
   // const [users, setUsers] = useState(null);
 
@@ -28,7 +31,7 @@ function Front({ show }) {
 
   const sorting = (e) => {
     const sortOrder = e.target.value;
-    setSort(sortOrder);
+    setSortRate(sortOrder);
     const action = {
       type: sortOrder,
     };
@@ -41,7 +44,7 @@ function Front({ show }) {
     if (filter === 0 && !search) {
       query = '';
     } else if (filter) {
-      query = 'sm-id=' + filter;
+      query = '?cat-id=' + filter;
     } else if (search) {
       query = '?s=' + search;
     }
@@ -59,8 +62,8 @@ function Front({ show }) {
 
   // Simple Read FRONT
   useEffect(() => {
-    axios.get('http://localhost:3003/second', authConfig()).then((res) => {
-      // setSecond(res.data);
+    axios.get('http://localhost:3003/kategorijos', authConfig()).then((res) => {
+      setCats(res.data);
     });
   }, [lastUpdate]);
 
@@ -79,20 +82,20 @@ function Front({ show }) {
       });
   }, [createCom]);
 
-  // // CREATE RATING
-  // useEffect(() => {
-  //   if (null === createRates) return;
-  //   axios
-  //     .put(
-  //       'http://localhost:3003/reitingai/' + createRates.id,
-  //       createRates,
-  //       authConfig()
-  //     )
-  //     .then((res) => {
-  //       showMessage(res.data.msg);
-  //       setLastUpdate(Date.now());
-  //     });
-  // }, [createRates]);
+  // CREATE RATING
+  useEffect(() => {
+    if (null === createRates) return;
+    axios
+      .put(
+        'http://localhost:3003/reitingai/' + createRates.id,
+        createRates,
+        authConfig()
+      )
+      .then((res) => {
+        showMessage(res.data.msg);
+        setLastUpdate(Date.now());
+      });
+  }, [createRates]);
 
   // //////////////GET USER/////////////////
 
@@ -105,14 +108,18 @@ function Front({ show }) {
   return (
     <FrontContext.Provider
       value={{
+        cats,
         movies,
         message,
         showMessage,
         setFilter,
         setSearch,
+        sortRate,
         sorting,
         setCreateCom,
-        // setCreateRates,
+        rate,
+        setRate,
+        setCreateRates,
       }}
     >
       {show === 'welcome' ? (

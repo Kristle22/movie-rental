@@ -2,13 +2,13 @@ function Reducer(state, action) {
   let newState;
   switch (action.type) {
     case 'main_list':
-      newState = action.payload.map((cl, i) => ({ ...cl, row: i }));
+      newState = action.payload.map((m, i) => ({ ...m, row: i, show: true }));
       break;
-    case 'price_asc':
-      newState = [...state].sort((a, b) => a.price - b.price);
+    case 'rate_asc':
+      newState = [...state].sort((a, b) => a.rating - b.rating);
       break;
-    case 'price_desc':
-      newState = [...state].sort((a, b) => b.price - a.price);
+    case 'rate_desc':
+      newState = [...state].sort((a, b) => b.rating - a.rating);
       break;
     case 'default':
       newState = [...state].sort((a, b) => a.id - b.id);

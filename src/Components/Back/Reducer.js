@@ -11,6 +11,12 @@ function Reducer(state, action) {
     case 'price_desc':
       newState = [...state].sort((a, b) => b.price - a.price);
       break;
+    case 'rate_asc':
+      newState = [...state].sort((a, b) => a.rating - b.rating);
+      break;
+    case 'rate_desc':
+      newState = [...state].sort((a, b) => b.rating - a.rating);
+      break;
     case 'default':
       newState = [...state].sort((a, b) => a.id - b.id);
       break;

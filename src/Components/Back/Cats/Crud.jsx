@@ -8,7 +8,7 @@ function Crud() {
     <>
       <div className='container'>
         <Nav />
-        <div className='flex'>
+        <div className='flex-row'>
           <Create />
           <List />
         </div>

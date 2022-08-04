@@ -21,12 +21,11 @@ function Row({ row }) {
         </h4>
       </div>
       <h3>Comments({row.com_count})</h3>
-      <ul className='flex-row'>
-        {row.coms && row.coms.slice(0, -5).split('-^-^-,').map((c, i) => <li key={i} className='flex-row'>{c.split('#').map(el => <i className='flex-nw'>{el}</i>)}
-          <button type='button' className='dlt' onClick={() => handleDeleteCom(row.coms_id.split(',')[i])}>
+      <ul>
+        {row.coms && row.coms.slice(0, -5).split('-^-^-,').map((c, i) => <div className='flex-nw'><li key={i} className='flex-col'>{c.split('#').map(el => <i>{el}</i>)}</li>
+          <button type='button' className='dlt' style={{ marginBottom: '25px' }} onClick={() => handleDeleteCom(row.coms_id.split(',')[i])}>
             <svg><use href='#Delete' /> </svg>
-          </button>
-        </li>)}
+          </button></div>)}
       </ul>
       {/* <StatusBtns row={row} /> */}
     </div >

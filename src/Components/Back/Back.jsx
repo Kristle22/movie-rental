@@ -54,7 +54,7 @@ function Back({ show }) {
     if (filter === 0 && !search) {
       query = '';
     } else if (filter) {
-      query = 'sm-id=' + filter;
+      query = '?cat-id=' + filter;
     } else if (search) {
       query = '?s=' + search;
     }

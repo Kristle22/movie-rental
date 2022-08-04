@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import Row from './Row';
 import BackContext from '../BackContext';
-// import SortBtns from '../SortBtns';
-// import Filter from '../Filter';
-// import Search from '../Search';
+import Search from '../Search';
+import Filter from '../Filter';
+import SortBtns from '../SortBtns';
 
 function List() {
   const { movies } = useContext(BackContext);
@@ -14,14 +14,16 @@ function List() {
         <h2>List of Movies</h2>
       </div>
       <div className='flex-card'>
+        <div className="flex-nw sb">
+          <Search />
+          <Filter />
+          <SortBtns />
+        </div>
         <div className='user-4'>
           <h4>Title</h4>
           <h4>Category</h4>
           <h4>Price</h4>
           <h4>Rate</h4>
-          {/* <Filter /> */}
-          {/* <Search /> */}
-          {/* <SortBtns /> */}
         </div>
         {movies ? movies.map((r) => <Row key={r.id} row={r} />) : null}
       </div>

@@ -94,11 +94,14 @@ body {
   justify-content: center;
 }
 .flex-nw {
-  width: 80%;
+  width: 90%;
   display: flex;
   gap: 10px;
   justify-content: start;
   align-items: center;
+}
+.sb {
+  justify-content: space-between;
 }
 .flex-col {
   width: 100%;
@@ -339,6 +342,7 @@ button.dlt {
   fill: #c3463b;
   background-color: #ea766c;
   border: 5px solid #d45449;
+  margin-bottom: 5px;
 }
 button.put.order {
   float: right;

@@ -22,6 +22,8 @@ function Front({ show }) {
   const [rate, setRate] = useState(0);
   const [createRates, setCreateRates] = useState(null);
 
+  const [cat, setCat] = useState(0);
+
   // const [users, setUsers] = useState(null);
 
   const showMessage = (mes) => {
@@ -37,6 +39,11 @@ function Front({ show }) {
     };
     dispachMovies(action);
   };
+
+  const filtering = (id) => {
+    setCat(id);
+    setFilter(Number(id));
+  }
 
   // Read & queries FRONT
   useEffect(() => {
@@ -114,6 +121,8 @@ function Front({ show }) {
         setSearch,
         sortRate,
         sorting,
+        cat,
+        filtering,
         setCreateCom,
         rate,
         setRate,

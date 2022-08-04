@@ -17,10 +17,10 @@ function Row({ row }) {
           {row.title}
         </h2>
         <h4>
-          Price: {row.price.toFixed(2)} Eur.
+          Price: {Number(row.price).toFixed(2)} Eur.
         </h4>
         <h3>
-          Rating: {row.rating}
+          Rating: {Number(row.rating).toFixed(2)}
         </h3>
       </div>
       <h3>Comments({row.com_count})</h3>

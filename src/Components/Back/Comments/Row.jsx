@@ -12,13 +12,16 @@ function Row({ row }) {
         src={row.image ? row.image : null}
         alt='coat of arms'
       /> */}
-      <div className="flex-nw line-w">
+      <div className="flex-nw sb line-w">
         <h2>
           {row.title}
         </h2>
         <h4>
           Price: {row.price.toFixed(2)} Eur.
         </h4>
+        <h3>
+          Rating: {row.rating}
+        </h3>
       </div>
       <h3>Comments({row.com_count})</h3>
       <ul>

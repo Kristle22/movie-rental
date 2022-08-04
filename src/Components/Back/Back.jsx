@@ -4,7 +4,7 @@ import BackContext from './BackContext';
 import Nav from './Nav';
 import MoviesCrud from './Movies/Crud'
 import CatsCrud from './Cats/Crud';
-// import CommentsCrud from './Comments/Crud';
+import ComsCrud from './Comments/Crud';
 import axios from 'axios';
 import { authConfig } from '../../Functions/auth';
 
@@ -32,7 +32,7 @@ function Back({ show }) {
   // Optional state
   const [deletePhoto, setDeletePhoto] = useState(null);
   const [comments, setComments] = useState(null);
-  const [deleteCom, setDeleteCom] = useState(null);
+  // const [deleteCom, setDeleteCom] = useState(null);
 
   const sorting = (e) => {
     const sortOrder = e.target.value;
@@ -217,8 +217,8 @@ function Back({ show }) {
         <MoviesCrud />
       ) : show === 'cats' ? (
         <CatsCrud />
-        // ) : show === 'comments' ? (
-        //   <CommentsCrud />
+      ) : show === 'comments' ? (
+        <ComsCrud />
       ) : null}
     </BackContext.Provider>
   );

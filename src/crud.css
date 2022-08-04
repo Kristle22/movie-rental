@@ -88,14 +88,24 @@ body {
   margin: 20px 0;
   height: fit-content;
 }
-.flex-col {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
 .flex {
   display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flex-nw {
+  width: 80%;
+  display: flex;
+  gap: 10px;
+  justify-content: start;
+  align-items: center;
+}
+.flex-col {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
 }
 .flex-row {
   display: flex;
@@ -895,9 +905,10 @@ button.put.reg {
   border-radius: 5px;
   padding: 10px;
   margin: 5px 0;
+  width: 85%;
 }
 .com.frame {
-  width: 90%;
+  width: 55%;
 }
 .line {
   border-bottom: 2px solid #8a858571;
@@ -1116,12 +1127,6 @@ h1 b {
   .flex {
     flex-wrap: wrap;
   }
-}
-.flex-nw {
-  width: 80%;
-  display: flex;
-  gap: 10px;
-  justify-content: space-around;
 }
 
 @media screen and (max-width: 975px) {

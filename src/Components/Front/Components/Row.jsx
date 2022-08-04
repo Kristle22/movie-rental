@@ -1,6 +1,6 @@
-import StarRating from './StarRating';
-// import Comment from './Comment';
 // import Rating from './Rating';
+import StarRating from './StarRating';
+import Comment from './Comment';
 
 function Row({ row }) {
 
@@ -25,8 +25,8 @@ function Row({ row }) {
         <p className='heading'>{row.rating.toFixed(2)}</p>
         <svg><use href='#rating' /></svg>
       </div>
+      <Comment row={row} />
       <div className="flex">
-        {/* <Comment row={row} /> */}
         {/* <Rating row={row} /> */}
       </div>
     </>

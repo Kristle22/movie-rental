@@ -4,7 +4,7 @@ import FrontContext from './FrontContext';
 // import Nav from './Nav';
 import Crud from './Components/Crud';
 import axios from 'axios';
-import { authConfig } from '../../Functions/auth';
+// import { authConfig } from '../../Functions/auth';
 
 function Front({ show }) {
   const [lastUpdate, setLastUpdate] = useState(Date.now());
@@ -50,7 +50,7 @@ function Front({ show }) {
     }
 
     axios
-      .get('http://localhost:3003/filmai' + query, authConfig())
+      .get('http://localhost:3003/filmai' + query)
       .then((res) => {
         const action = {
           type: 'main_list',
@@ -62,7 +62,7 @@ function Front({ show }) {
 
   // Simple Read FRONT
   useEffect(() => {
-    axios.get('http://localhost:3003/kategorijos', authConfig()).then((res) => {
+    axios.get('http://localhost:3003/kategorijos').then((res) => {
       setCats(res.data);
     });
   }, [lastUpdate]);
@@ -74,7 +74,6 @@ function Front({ show }) {
       .post(
         'http://localhost:3003/komentarai',
         createCom,
-        authConfig()
       )
       .then((res) => {
         showMessage(res.data.msg);
@@ -89,7 +88,6 @@ function Front({ show }) {
       .put(
         'http://localhost:3003/reitingai/' + createRates.id,
         createRates,
-        authConfig()
       )
       .then((res) => {
         showMessage(res.data.msg);

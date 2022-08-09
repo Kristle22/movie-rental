@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import BackContext from '../BackContext';
 
 function Row({ row }) {
-  const { setDeleteData, setModalData } = useContext(BackContext);
+  const { setDeleteData, setModalData, filtering } = useContext(BackContext);
   const handleDelete = () => {
     setDeleteData(row);
   };
@@ -18,7 +18,7 @@ function Row({ row }) {
           alt='some_outfit'
         /> */}
         <p>{row.title}</p>
-        <u>{row.cat}</u>
+        <u style={{ cursor: 'pointer' }} onClick={() => filtering(row.cat_id)}>{row.cat}</u>
         <p>{Number(row.price).toFixed(2)} Eur.</p>
         <p>{Number(row.rating).toFixed(2)}</p>
       </div>

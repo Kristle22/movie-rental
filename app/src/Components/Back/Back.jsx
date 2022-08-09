@@ -28,7 +28,7 @@ function Back({ show }) {
   const [sort, setSort] = useState('0');
   const [filter, setFilter] = useState(0);
   const [search, setSearch] = useState('');
-
+  const [cat, setCat] = useState(0);
   // Optional state
   const [deletePhoto, setDeletePhoto] = useState(null);
   const [comments, setComments] = useState(null);
@@ -41,6 +41,11 @@ function Back({ show }) {
       type: sortOrder,
     };
     dispachMovies(action);
+  };
+
+  const filtering = (id) => {
+    setCat(id);
+    setFilter(id);
   };
 
   const showMessage = (mes) => {
@@ -187,6 +192,8 @@ function Back({ show }) {
         setDeleteCat,
         sort,
         sorting,
+        cat,
+        filtering,
         filter,
         setFilter,
         setSearch,

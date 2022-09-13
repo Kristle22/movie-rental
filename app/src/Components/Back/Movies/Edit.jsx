@@ -8,11 +8,12 @@ function Edit() {
     setModalData,
     setEditData,
     cats,
-    image,
-    setImage,
+    // image,
+    // setImage,
     setDeletePhoto,
   } = useContext(BackContext);
 
+  const [image, setImage] = useState(null);
   const [title, setTitle] = useState('');
   const [cat, setCat] = useState(0);
   const [price, setPrice] = useState('');

@@ -1,13 +1,9 @@
 import { useContext } from 'react';
-import { useRef, useState } from 'react';
 import getBase64 from '../../../Functions/getBase64';
 import BackContext from '../BackContext';
 
 function Photo() {
-  const { showMessage } = useContext(BackContext);
-
-  const fileInput = useRef();
-  const [image, setImage] = useState(null);
+  const { showMessage, fileInput, image, setImage } = useContext(BackContext);
 
   const showImage = () => {
     getBase64(fileInput.current.files[0])
@@ -26,14 +22,14 @@ function Photo() {
           Upload Photo.
         </small>
       </div>
-      {image ? (
+      {/* {image ? (
         <div className='fix'>
           <img
             src={image}
             alt='activity'
           />
         </div>
-      ) : null}
+      ) : null} */}
     </div>)
 }
 

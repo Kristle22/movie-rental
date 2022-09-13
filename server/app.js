@@ -127,7 +127,7 @@ app.get('/filmai', (req, res) => {
   if (!req.query['cat-id'] && !req.query['s']) {
     sql = `
     SELECT
-    m.id, m.title, m.price, m.cat_id, c.title AS cat,
+    m.id, m.title, m.price, m.cat_id, c.title AS cat, photo,
     rates, rate_sum, rating, GROUP_CONCAT(cm.id) AS coms_id, GROUP_CONCAT(time, '#', com, '-^-^-') AS coms, COUNT(com) AS com_count
     FROM movies AS m 
 
@@ -142,7 +142,7 @@ app.get('/filmai', (req, res) => {
   } else if (req.query['cat-id']) {
     sql = `
     SELECT
-    m.id, m.title, m.price, m.rating, m.cat_id, c.title AS cat,
+    m.id, m.title, m.price, m.rating, m.cat_id, c.title AS cat, photo,
     rates, rate_sum, rating
     FROM movies AS m 
 
@@ -155,7 +155,7 @@ app.get('/filmai', (req, res) => {
   } else {
     sql = `
     SELECT
-    m.id, m.title, m.price, m.rating, m.cat_id, c.title AS cat,
+    m.id, m.title, m.price, m.rating, m.cat_id, c.title AS cat, photo,
     rates, rate_sum, rating
     FROM movies AS m 
 
@@ -192,10 +192,10 @@ app.get('/kategorijos', (req, res) => {
 app.post('/filmai', (req, res) => {
   const sql = `
   INSERT INTO movies
-  (title, price, cat_id)
-  VALUES (?, ?, ?)
+  (title, price, cat_id, photo)
+  VALUES (?, ?, ?, ?)
   `;
-  con.query(sql, [req.body.title, req.body.price, req.body.cat], (err, result) => {
+  con.query(sql, [req.body.title, req.body.price, req.body.cat, req.body.photo], (err, result) => {
     if (err) throw err;
     res.send({ result, msg: { text: 'Naujas filmas sekmingai itrauktas', type: 'success' } });
   })
@@ -217,10 +217,10 @@ app.post('/kategorijos', (req, res) => {
 app.put('/filmai/:id', (req, res) => {
   const sql = `
   UPDATE movies 
-  SET title = ?, price = ?, cat_id = ?
+  SET title = ?, price = ?, cat_id = ?, photo = ?
   WHERE id = ?
   `;
-  con.query(sql, [req.body.title, req.body.price, req.body.cat, req.params.id], (err, result) => {
+  con.query(sql, [req.body.title, req.body.price, req.body.cat, req.body.photo, req.params.id], (err, result) => {
     if (err) throw err;
     res.send({ result, msg: { text: 'Informacija apie filma sekmingai atnaujinta', type: 'info' } });
   });
@@ -268,7 +268,7 @@ app.post('/komentarai', (req, res) => {
 app.get('/komentarai', (req, res) => {
   const sql = `
   SELECT
- GROUP_CONCAT(cm.id) AS coms_id, GROUP_CONCAT(time, '#', com, '-^-^-') AS coms, COUNT(com) AS com_count, film_id, m.title, m.price, m.rating
+ GROUP_CONCAT(cm.id) AS coms_id, GROUP_CONCAT(time, '#', com, '-^-^-') AS coms, COUNT(com) AS com_count, film_id, m.title, m.price, m.rating, m.photo
   FROM comments AS cm
   LEFT JOIN movies AS m
   ON cm.film_id = m.id
@@ -296,7 +296,7 @@ app.delete('/komentarai/:id', (req, res) => {
 // DELETE PHOTO BACK
 app.delete('/nuotrauka/:id', (req, res) => {
   // const sql = `
-  // UPDATE garment
+  // UPDATE movies
   // SET photo = null
   // WHERE id = ?
   // `;

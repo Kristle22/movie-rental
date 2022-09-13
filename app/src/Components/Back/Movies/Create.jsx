@@ -1,13 +1,10 @@
-import { useContext, useRef, useState } from 'react';
+import { useContext, useState } from 'react';
 import BackContext from '../BackContext';
-// import Photo from './Photo';
+import Photo from './Photo';
 
 
 function Create() {
-  const { setCreateData, cats } = useContext(BackContext);
-
-  // const fileInput = useRef();
-  // const [image, setImage] = useState(null);
+  const { setCreateData, cats, fileInput, image, setImage } = useContext(BackContext);
 
   const [title, setTitle] = useState('');
   const [cat, setCat] = useState(0);
@@ -18,14 +15,14 @@ function Create() {
       title,
       price: parseFloat(price),
       cat: Number(cat),
-      // photo: image,
+      photo: image,
     };
     setCreateData(data);
     setTitle('');
     setPrice('');
     setCat(0);
-    // setImage(null);
-    // fileInput.current.value = null;
+    setImage(null);
+    fileInput.current.value = null;
   };
 
   return (
@@ -34,6 +31,15 @@ function Create() {
         className='form-container'
         style={{ display: 'flex', justifyContent: 'end', alignItems: 'center' }}
       >
+        <div className='imghere'></div>
+        {image ? (
+          <div className='fix'>
+            <img
+              src={image}
+              alt='activity'
+            />
+          </div>
+        ) : null}
         <div className='form create'>
           <h3>Create a movie</h3>
           <form>
@@ -68,7 +74,7 @@ function Create() {
               value={price}
               placeholder='... Eur.'
             />
-            {/* <Photo /> */}
+            <Photo />
             <div className='btns add'>
               <button type='button' className='put' onClick={handleCreate}>
                 <svg>

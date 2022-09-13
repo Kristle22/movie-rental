@@ -7,12 +7,12 @@ function Row({ row }) {
 
   return (
     <div className=' com flex-col'>
-      {/* <img
-        className='img-box pad'
-        src={row.image ? row.image : null}
-        alt='coat of arms'
-      /> */}
       <div className="flex-nw sb line-w">
+        <img
+          className='img-box'
+          src={row.photo ? row.photo : null}
+          alt='movie'
+        />
         <h2>
           {row.title}
         </h2>

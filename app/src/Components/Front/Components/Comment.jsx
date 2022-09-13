@@ -13,7 +13,8 @@ function Comment({ row }) {
   }
 
   return (
-    <div className="com frame">
+    <div className="com frame front">
+      <h3>Movie: '<i>{row.title}</i>'</h3>
       <h2>
         Comments ({row.com_count})
       </h2>

@@ -8,15 +8,19 @@ function Row({ row }) {
   const { filtering } = useContext(FrontContext);
 
   return (
-    <>
-      <div className='flex-row short frame'>
-        {/* <div>
+    <div className='flex-row full'>
+      <div className='flex-col short frame' style={{ position: 'relative' }}>
+        <div>
           <img
-            className='img-box'
+            className='img-box front'
             src={row.photo}
             alt='film'
           />
-         </div> */}
+          <div className='rateIt pad' style={{ position: 'absolute', left: '220px', top: 0 }}>
+            <p className='heading'>{row.rating.toFixed(2)}</p>
+            <svg className='rating'><use href='#rating' /></svg>
+          </div>
+        </div>
         <h2>{row.title}</h2>
         <h3 style={{ cursor: 'pointer' }} onClick={() => filtering(row.cat_id)}><u>{row.cat}</u></h3>
         <p className='prc'>{Number(row.price).toFixed(2)} Eur.</p>
@@ -24,15 +28,11 @@ function Row({ row }) {
         </div>
         <StarRating row={row} />
       </div>
-      <div className='rateIt pad'>
-        <p className='heading'>{row.rating.toFixed(2)}</p>
-        <svg><use href='#rating' /></svg>
-      </div>
       <Comment row={row} />
-      <div className="flex">
+      <div className="">
         {/* <Rating row={row} /> */}
       </div>
-    </>
+    </div>
   );
 }
 

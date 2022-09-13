@@ -19,7 +19,8 @@ function List() {
           <Filter />
           <SortBtns />
         </div>
-        <div className='user-4'>
+        <div className='main-5'>
+          <h4>Photo</h4>
           <h4>Title</h4>
           <h4>Category</h4>
           <h4>Price</h4>

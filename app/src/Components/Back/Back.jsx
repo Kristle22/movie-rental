@@ -1,4 +1,4 @@
-import { useEffect, useState, useReducer } from 'react';
+import { useEffect, useState, useReducer, useRef } from 'react';
 import cityReducer from './Reducer';
 import BackContext from './BackContext';
 import Nav from './Nav';
@@ -29,6 +29,10 @@ function Back({ show }) {
   const [filter, setFilter] = useState(0);
   const [search, setSearch] = useState('');
   const [cat, setCat] = useState(0);
+
+  const fileInput = useRef();
+  const [image, setImage] = useState(null);
+
   // Optional state
   const [deletePhoto, setDeletePhoto] = useState(null);
   const [comments, setComments] = useState(null);
@@ -202,6 +206,9 @@ function Back({ show }) {
         setStatus,
         handleDeleteCom,
         comments,
+        fileInput,
+        image,
+        setImage
       }}
     >
       {show === 'admin' ? (

@@ -12,11 +12,11 @@ function Row({ row }) {
 
   return (
     <>
-      <div className='user-4 frame'>
-        {/* <img
+      <div className='main-5 frame'>
+        <img
           src={row.photo}
-          alt='some_outfit'
-        /> */}
+          alt='movie'
+        />
         <p>{row.title}</p>
         <u style={{ cursor: 'pointer' }} onClick={() => filtering(row.cat_id)}>{row.cat}</u>
         <p>{Number(row.price).toFixed(2)} Eur.</p>

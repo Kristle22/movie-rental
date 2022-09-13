@@ -1,7 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import BackContext from '../BackContext';
-// import { useRef } from 'react';
-// import Photo from './Photo';
+import Photo from './Photo';
 
 function Edit() {
   const {
@@ -9,21 +8,21 @@ function Edit() {
     setModalData,
     setEditData,
     cats,
-    // setDeletePhoto,
+    image,
+    setImage,
+    setDeletePhoto,
   } = useContext(BackContext);
 
   const [title, setTitle] = useState('');
   const [cat, setCat] = useState(0);
   const [price, setPrice] = useState('');
 
-  // const fileInput = useRef();
-  // const [image, setImage] = useState(null);
   // console.log(modalData);
 
-  // const handleDeletePhoto = () => {
-  //   setDeletePhoto({ id: modalData.id });
-  //   setModalData((p) => ({ ...p, photo: null }));
-  // };
+  const handleDeletePhoto = () => {
+    setDeletePhoto({ id: modalData.id });
+    setModalData((p) => ({ ...p, photo: null }));
+  };
 
   useEffect(() => {
     if (null === modalData) {
@@ -34,8 +33,8 @@ function Edit() {
       cats.filter((c) => modalData.cat === c.title)[0]?.id ?? null
     );
     setPrice(Number(modalData.price));
-    // setImage(modalData.photo);
-  }, [modalData, cats]);
+    setImage(modalData.photo);
+  }, [modalData, cats, setImage]);
 
   const handleEdit = () => {
     const data = {
@@ -43,7 +42,7 @@ function Edit() {
       title,
       price,
       cat,
-      // photo: image,
+      photo: image,
     };
     setEditData(data);
     console.log(data);
@@ -66,14 +65,23 @@ function Edit() {
               >
                 &times;
               </button>
-              {/* <button className='remove'
+              <button className='remove'
                 type='button'
                 onClick={handleDeletePhoto}>
                 Remove Photo
               </button>
-              <Photo /> */}
-              <h1 className='heading'>Movie Rating:</h1>
-              <h1>{modalData.rating.toFixed(2)}</h1>
+              <div className='img'>
+                <img
+                  src={image ? image : null}
+                  alt='movie'
+                />
+              </div>
+              <div className="rate flex-nw">
+                <svg>
+                  <use href='#rating' />
+                </svg>
+                <h1>{modalData.rating.toFixed(2)}</h1>
+              </div>
             </div>
             <div className='right-side form'>
               <form>
@@ -108,6 +116,7 @@ function Edit() {
                   value={price}
                   placeholder='... Eur.'
                 />
+                <Photo />
                 <div className='btns-modal'>
                   <button
                     type='button'
